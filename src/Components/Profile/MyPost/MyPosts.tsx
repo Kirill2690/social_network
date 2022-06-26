@@ -3,7 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
-    let postData = [
+    let posts = [
         {
             id: 1,
             message: 'Hi,how are you?',
@@ -17,7 +17,9 @@ const MyPosts = () => {
             img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_d4t6iILWhDGYDrjudm76-kC7P77d3zZqQ&usqp=CAU'
         }
 
-    ]
+    ];
+    let postsElement = posts.map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}
+                                            img={p.img}/>)
     return (
         <div className={s.posts_block}>
             <h3>My post</h3>
@@ -30,10 +32,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={s.posts}>
-                <Post message='Hi,how are you?' likeCount='10'
-                      img='https://shapka-youtube.ru/wp-content/uploads/2021/02/prikolnaya-avatarka-dlya-devushek.jpg'/>
-                <Post message='Hello!' likeCount='15'
-                      img='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_d4t6iILWhDGYDrjudm76-kC7P77d3zZqQ&usqp=CAU'/>
+                {postsElement}
             </div>
         </div>
     );
