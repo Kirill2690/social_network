@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./Profive.module.css";
+import MyPosts from "./MyPost/MyPosts";
 
 const Profile = () => {
     return (
@@ -10,22 +11,7 @@ const Profile = () => {
             <div className={s.item}>
                 ava+discroption
             </div>
-            <div className={s.item}>
-                My post
-                <div className={s.item}>
-                    New posts
-                </div>
-                <div>
-                    <div className={s.item}>
-                        Post1
-                    </div>
-                    <div className={s.item}>
-                        Post2
-                    </div>
-
-                </div>
-            </div>
-
+            <MyPosts/>
         </div>
 
     );
