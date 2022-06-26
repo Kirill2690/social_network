@@ -1,11 +1,11 @@
 import React from 'react';
-import s from "./../Components/Profive.module.css";
+import s from "./Profive.module.css";
 
 const Profile = () => {
     return (
         <div className={s.content}>
             <div>
-                <img src='https://onlypult.com/blog_uploads/822fe1f0c39d2200251c7c18847e13cd.png'/>
+                <img src='https://habrastorage.org/r/w1560/getpro/habr/upload_files/454/473/cda/454473cdac3565410367172c7824f19a.jpg'/>
             </div>
             <div className={s.item}>
                 ava+discroption
