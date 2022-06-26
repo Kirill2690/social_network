@@ -2,12 +2,20 @@ import React from 'react';
 import s from "./Profive.module.css";
 import MyPosts from "./MyPost/MyPosts";
 import ProfileInfo from "./MyPost/ProfileInfo/ProfileInfo";
-
-const Profile = () => {
+type ProfileType={
+    profile:Array<PostType >
+}
+type PostType = {
+    id: number,
+    message: string,
+    likeCount: number,
+    img: string
+};
+const Profile = (props:ProfileType) => {
     return (
         <div className={s.profile}>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts={props.profile}/>
      </div>
 
     );

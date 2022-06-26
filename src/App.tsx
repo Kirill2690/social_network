@@ -7,19 +7,23 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./Components/Navbar/Music";
 import Settings from "./Components/Navbar/Settings";
+import state from "./Redux/State";
 
 
-function App() {
+const App = () => {
+    let dialogs = state.dialogsPage.dialogsData
+    let message = state.dialogsPage.messagesData
+    let profile = state.profilePage.posts;
     return (
         <BrowserRouter>
             <div className='wrapper'>
                 <Header/>
                 <Navbar/>
                 <div className='wrapper-content'>
-                    <Route path={'/dialogs'} component={Dialogs}/>
-                    <Route path={'/profile'} component={Profile}/>
-                    <Route path={'/music'} component={Music}/>
-                    <Route path={'/settings'} component={Settings}/>
+                    <Route path={'/dialogs'} render={() => <Dialogs dialogs={dialogs} message={message}/>}/>
+                    <Route path={'/profile'} render={() => <Profile profile={profile}/>}/>
+                    <Route path={'/music'} render={Music}/>
+                    <Route path={'/settings'} render={Settings}/>
 
                 </div>
 
