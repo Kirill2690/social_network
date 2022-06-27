@@ -1,8 +1,9 @@
 import React from 'react';
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-type MyPostsType={
-    posts:Array<PostType>
+
+type MyPostsType = {
+    posts: Array<PostType>
 }
 type PostType = {
     id: number,
@@ -11,10 +12,11 @@ type PostType = {
     img: string
 };
 
-const MyPosts = (props:MyPostsType) => {
+const MyPosts = (props: MyPostsType) => {
+
 
     let postsElement = props.posts.map(p => <Post message={p.message} likeCount={p.likeCount} key={p.id}
-                                            img={p.img}/>)
+                                                  img={p.img} id={p.id}/>)
     return (
         <div className={s.posts_block}>
             <h3>My post</h3>

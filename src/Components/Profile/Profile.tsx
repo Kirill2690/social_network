@@ -3,7 +3,7 @@ import s from "./Profive.module.css";
 import MyPosts from "./MyPost/MyPosts";
 import ProfileInfo from "./MyPost/ProfileInfo/ProfileInfo";
 type ProfileType={
-    profile:Array<PostType >
+    profile:PostType[]
 }
 type PostType = {
     id: number,
