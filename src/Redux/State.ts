@@ -1,31 +1,34 @@
-type MessageType = {
+import {renderTree} from "../index";
+
+export type MessageType = {
     id: number,
     message: string
 };
 
-type DialogType = {
+export type DialogType = {
     id: number,
     name: string
 };
 
-type PostType = {
+export type PostType = {
     id: number,
     message: string,
     likeCount: number,
     img: string
 };
 
-type ProfilePageType = {
+export type ProfilePageType = {
     posts: Array<PostType>
+    newPostText:string
 };
 
 
-type DialogsPageType = {
+export type DialogsPageType = {
     dialogsData: Array<DialogType>,
     messagesData: Array<MessageType>
 };
 
-type AppStateType = {
+export type AppStateType = {
     profilePage: ProfilePageType,
     dialogsPage: DialogsPageType
 };
@@ -46,7 +49,8 @@ let state: AppStateType = {
                 likeCount: 15,
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_d4t6iILWhDGYDrjudm76-kC7P77d3zZqQ&usqp=CAU'
             }
-        ]
+        ],
+    newPostText:'Hello'
 
     },
 
@@ -73,7 +77,21 @@ let state: AppStateType = {
 
     }
 }
+export const addPost = (postMessage: string) => {
+    let newPost: PostType = {
+        id: new Date().getTime(),
+        message: postMessage,
+        likeCount: 0,
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ3tpdGkNpv9hFmW49zM7nm69--mVYsoVDfw&usqp=CAU'
+    };
+    state.profilePage.posts.push(newPost)
+    renderTree(state)
+}
 
+export const callBackNewPostText=(newPostText:string)=>{
+    state.profilePage.newPostText=newPostText;
+    renderTree(state)
+}
 export default state;
 
 
