@@ -4,6 +4,7 @@ export type StoreType = {
     addPost:(postMessage: string)=>void,
     onChange:()=>void,
     subscribe:(callback: () => void)=>void
+    getState:()=>AppStateType
 
 }
 
@@ -70,6 +71,9 @@ const store: StoreType = {
     },
     subscribe(callback){
         this.onChange = callback
+    },
+    getState(){
+       return  this._state
     }
 
 
