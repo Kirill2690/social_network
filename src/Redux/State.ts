@@ -1,13 +1,31 @@
 export type StoreType = {
     _state: AppStateType,
-    callBackNewPostText:(newPostText: string)=>void,
-    addPost:(postMessage: string)=>void,
-    onChange:()=>void,
-    subscribe:(callback: () => void)=>void
-    getState:()=>AppStateType
+    callBackNewPostText: (postMessage: string) => void,
+    addPost: (newPostText: string) => void,
+    onChange: () => void,
+    subscribe: (callback: () => void) => void
+    getState: () => AppStateType
+    dispatch: (action: ActionsType) => void
 
 }
+type AddPostActionType = ReturnType<typeof addPostAC>
+type ChangeNewTextActionType=ReturnType<typeof changeNewTextAC>
+export type ActionsType=AddPostActionType | ChangeNewTextActionType
 
+export const addPostAC=(newPostText: string)=>{
+    return {
+        type: 'ADD-POST',
+        newPostText:newPostText
+    }as const
+}
+
+export const changeNewTextAC=(postMessage: string)=>{
+    return {
+        type: 'CHANGE-NEW-TEXT',
+        postMessage: postMessage
+
+    }as const
+}
 const store: StoreType = {
     _state: {
         profilePage: {
@@ -25,7 +43,7 @@ const store: StoreType = {
                     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_d4t6iILWhDGYDrjudm76-kC7P77d3zZqQ&usqp=CAU'
                 }
             ],
-            newPostText: ' '
+            newPostText: ''
 
         },
 
@@ -52,36 +70,49 @@ const store: StoreType = {
 
         }
     },
-    callBackNewPostText(newPostText: string){
+    callBackNewPostText(newPostText: string) {
         this._state.profilePage.newPostText = newPostText;
         this.onChange()
     },
-    addPost(postMessage: string) {
+    addPost(newPostText: string) {
         let newPost: PostType = {
             id: new Date().getTime(),
-            message: postMessage,
+            message: newPostText,
             likeCount: 0,
             img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ3tpdGkNpv9hFmW49zM7nm69--mVYsoVDfw&usqp=CAU'
         };
         this._state.profilePage.posts.push(newPost)
         this.onChange()
     },
-    onChange(){
+    onChange() {
         console.log('state changed')
     },
-    subscribe(callback){
+    subscribe(callback) {
         this.onChange = callback
     },
-    getState(){
-       return  this._state
+    getState() {
+        return this._state
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: new Date().getTime(),
+                message: action.newPostText,
+                likeCount: 0,
+                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ3tpdGkNpv9hFmW49zM7nm69--mVYsoVDfw&usqp=CAU'
+            };
+            this._state.profilePage.posts.push(newPost)
+            this.onChange()
+
+        } else if (action.type === 'CHANGE-NEW-TEXT') {
+            this._state.profilePage.newPostText = action.postMessage;
+            this.onChange()
+        }
+
     }
 
 
-
 }
-
-////
-///ncdsijcnsij
 
 
 export type MessageType = {
@@ -116,10 +147,6 @@ export type AppStateType = {
     profilePage: ProfilePageType,
     dialogsPage: DialogsPageType
 };
-
-
-
-
 
 
 export default store;

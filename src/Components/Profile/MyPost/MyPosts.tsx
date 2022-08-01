@@ -1,12 +1,15 @@
 import React, {ChangeEvent} from 'react';
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {ActionsType} from "../../../Redux/State";
 
 type MyPostsType = {
     posts: Array<PostType>
     addPost: (postMessage: string) => void
     newPostText: string
     callBackNewPostText:(newPostText:string)=>void
+    dispatch:(action:ActionsType)=>void,
+
 
 }
 type PostType = {
@@ -21,8 +24,8 @@ const MyPosts = (props: MyPostsType) => {
                                                   img={p.img} id={p.id}/>)
 
     const addPost = () => {
+        props.dispatch({type:'ADD-POST',newPostText: props.newPostText})
 
-        props.addPost(props.newPostText)
        
     }
     const newPostTextOnChangeHandler = ((e:ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,7 +35,7 @@ const MyPosts = (props: MyPostsType) => {
             <h3>My post</h3>
             <div>
                 <div>
-                    <textarea value={props.newPostText} onChange={newPostTextOnChangeHandler}/>
+                    <textarea value={props.newPostText} placeholder={'Enter you post'} onChange={newPostTextOnChangeHandler}/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

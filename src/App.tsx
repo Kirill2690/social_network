@@ -9,8 +9,8 @@ import Music from "./Components/Navbar/Music";
 import Settings from "./Components/Navbar/Settings";
 import {StoreType} from "./Redux/State";
 
-type PropsType={
-    store:StoreType
+type PropsType = {
+    store: StoreType
 }
 /*
 type MessageType = {
@@ -46,8 +46,8 @@ type AppStateType = {
 */
 
 
-const App:React.FC<PropsType> = (props) => {
-  const state =props.store.getState()
+const App: React.FC<PropsType> = (props) => {
+    const state = props.store.getState()
 
     return (
 
@@ -55,20 +55,21 @@ const App:React.FC<PropsType> = (props) => {
             <Header/>
             <Navbar/>
             <div className='wrapper-content'>
-<Routes>
-                <Route path={'/dialogs'} element={<Dialogs dialogs={state.dialogsPage.dialogsData} message={state.dialogsPage.messagesData}/>}/>
-                <Route path={'/profile'} element={<Profile profile={state.profilePage.posts}
-                                                                addPost={props.store.addPost.bind(props.store)}
-                                                                newPostText={state.profilePage.newPostText}
-                                                                callBackNewPostText={props.store.callBackNewPostText.bind(props.store)}/>}/>
-                <Route path={'/music'} element={<Music/>}/>
-                <Route path={'/settings'} element={<Settings/>}/>
-</Routes>
+                <Routes>
+                    <Route path={'/dialogs'} element={<Dialogs dialogs={state.dialogsPage.dialogsData}
+                                                               message={state.dialogsPage.messagesData}/>}/>
+                    <Route path={'/profile'} element={<Profile profile={state.profilePage.posts}
+                                                               addPost={props.store.addPost.bind(props.store)}
+                                                               dispatch={props.store.dispatch.bind(props.store)}
+                                                               newPostText={state.profilePage.newPostText}
+                                                               callBackNewPostText={props.store.callBackNewPostText.bind(props.store)}/>}/>
+                    <Route path={'/music'} element={<Music/>}/>
+                    <Route path={'/settings'} element={<Settings/>}/>
+                </Routes>
 
             </div>
 
         </div>
-
 
 
     );
