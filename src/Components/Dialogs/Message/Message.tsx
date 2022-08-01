@@ -5,7 +5,7 @@ import s from './../Dialogs.module.css'
 type MessagesType = {
     message: string
 }
-
+//
 
 const Messages = (props: MessagesType) => {
     let newMessageElement=React.createRef<HTMLTextAreaElement>()

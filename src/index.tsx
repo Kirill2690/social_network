@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state, {addPost, AppStateType, callBackNewPostText} from "./Redux/State";
+import state, {addPost, AppStateType, callBackNewPostText, subscribe} from "./Redux/State";
 import {BrowserRouter} from "react-router-dom";
 
-export const renderTree = (state: AppStateType) => {
+export const renderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <App dialogs={state.dialogsPage.dialogsData} message={state.dialogsPage.messagesData}
@@ -15,4 +15,5 @@ export const renderTree = (state: AppStateType) => {
         document.getElementById('root')
     );
 }
-renderTree(state);
+
+subscribe(renderTree)
