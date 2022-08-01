@@ -57,9 +57,11 @@ const App: React.FC<PropsType> = (props) => {
             <div className='wrapper-content'>
                 <Routes>
                     <Route path={'/dialogs'} element={<Dialogs dialogs={state.dialogsPage.dialogsData}
-                                                               message={state.dialogsPage.messagesData}/>}/>
+                                                               message={state.dialogsPage.messagesData}
+                                                               newMessageText={state.dialogsPage.newMessageText}
+                                                               dispatch={props.store.dispatch.bind(props.store)}
+                    />}/>
                     <Route path={'/profile'} element={<Profile profile={state.profilePage.posts}
-                                                               addPost={props.store.addPost.bind(props.store)}
                                                                dispatch={props.store.dispatch.bind(props.store)}
                                                                newPostText={state.profilePage.newPostText}
                                                                callBackNewPostText={props.store.callBackNewPostText.bind(props.store)}/>}/>

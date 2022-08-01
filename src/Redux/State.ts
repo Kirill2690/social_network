@@ -1,6 +1,6 @@
 export type StoreType = {
     _state: AppStateType,
-    callBackNewPostText: (postMessage: string) => void,
+    callBackNewPostText: (newText: string) => void,
     addPost: (newPostText: string) => void,
     onChange: () => void,
     subscribe: (callback: () => void) => void
@@ -10,7 +10,9 @@ export type StoreType = {
 }
 type AddPostActionType = ReturnType<typeof addPostAC>
 type ChangeNewTextActionType=ReturnType<typeof changeNewTextAC>
-export type ActionsType=AddPostActionType | ChangeNewTextActionType
+type UpdateNewMessageActionType=ReturnType<typeof updateMessageAC>
+type SendMessageActionType=ReturnType<typeof sendMessageAC>
+export type ActionsType=AddPostActionType | ChangeNewTextActionType|UpdateNewMessageActionType|SendMessageActionType
 
 export const addPostAC=(newPostText: string)=>{
     return {
@@ -19,13 +21,28 @@ export const addPostAC=(newPostText: string)=>{
     }as const
 }
 
-export const changeNewTextAC=(postMessage: string)=>{
+export const changeNewTextAC=(newText: string)=>{
     return {
         type: 'CHANGE-NEW-TEXT',
-        postMessage: postMessage
+        newText: newText
 
     }as const
 }
+
+export const updateMessageAC=(newMessageText:string)=>{
+    return{
+        type: 'UPDATE-MESSAGE',
+        newMessageText: newMessageText
+    }as const
+}
+export const sendMessageAC=()=>{
+    return{
+        type: 'SEND-MESSAGE',
+
+    }as const
+}
+
+
 const store: StoreType = {
     _state: {
         profilePage: {
@@ -63,15 +80,16 @@ const store: StoreType = {
                 {id: 2, message: 'Yo!'},
                 {id: 3, message: 'Goodbye!'},
                 {id: 4, message: 'Good!'},
-                {id: 4, message: 'NO!'}
+                {id: 5, message: 'NO!'}
 
-            ]
+            ],
+            newMessageText:''
 
 
         }
     },
-    callBackNewPostText(newPostText: string) {
-        this._state.profilePage.newPostText = newPostText;
+    callBackNewPostText(newText: string) {
+        this._state.profilePage.newPostText = newText;
         this.onChange()
     },
     addPost(newPostText: string) {
@@ -101,17 +119,25 @@ const store: StoreType = {
                 likeCount: 0,
                 img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ3tpdGkNpv9hFmW49zM7nm69--mVYsoVDfw&usqp=CAU'
             };
+            this._state.profilePage.newPostText=''
             this._state.profilePage.posts.push(newPost)
             this.onChange()
 
         } else if (action.type === 'CHANGE-NEW-TEXT') {
-            this._state.profilePage.newPostText = action.postMessage;
+            this._state.profilePage.newPostText = action.newText;
             this.onChange()
+        } else if (action.type === 'UPDATE-MESSAGE') {
+            this._state.dialogsPage.newMessageText = action.newMessageText;
+            this.onChange()
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = this._state.dialogsPage.newMessageText
+            this._state.dialogsPage.newMessageText = '';
+            this._state.dialogsPage.messagesData.push({id: 6, message: newMessage})
+            this.onChange()
+
         }
 
     }
-
-
 }
 
 
@@ -140,12 +166,15 @@ export type ProfilePageType = {
 
 export type DialogsPageType = {
     dialogsData: Array<DialogType>,
-    messagesData: Array<MessageType>
+    messagesData: Array<MessageType>,
+    newMessageText:string
+
 };
 
 export type AppStateType = {
     profilePage: ProfilePageType,
-    dialogsPage: DialogsPageType
+    dialogsPage: DialogsPageType,
+
 };
 
 

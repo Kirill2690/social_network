@@ -5,7 +5,7 @@ import {ActionsType} from "../../../Redux/State";
 
 type MyPostsType = {
     posts: Array<PostType>
-    addPost: (postMessage: string) => void
+
     newPostText: string
     callBackNewPostText:(newPostText:string)=>void
     dispatch:(action:ActionsType)=>void,

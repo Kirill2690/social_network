@@ -5,7 +5,6 @@ import ProfileInfo from "./MyPost/ProfileInfo/ProfileInfo";
 import {ActionsType} from "../../Redux/State";
 type ProfileType={
     profile:PostType[],
-    addPost:(postMessage:string)=>void,
     newPostText:string
     callBackNewPostText:(newPostText:string)=>void,
     dispatch:(action:ActionsType)=>void
@@ -22,7 +21,7 @@ const Profile = (props:ProfileType) => {
     return (
         <div className={s.profile}>
             <ProfileInfo/>
-            <MyPosts posts={props.profile} addPost={props.addPost} newPostText={props.newPostText}
+            <MyPosts posts={props.profile}  newPostText={props.newPostText}
                      callBackNewPostText={props.callBackNewPostText} dispatch={props.dispatch} />
      </div>
 
