@@ -26,5 +26,5 @@ const Profile = (props:ProfileType) => {
 
     );
 };
-
+//// mo kmokmf
 export default Profile;
