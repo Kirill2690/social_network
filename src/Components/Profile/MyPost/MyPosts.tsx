@@ -24,7 +24,7 @@ const MyPosts = (props: MyPostsType) => {
                                                   img={p.img} id={p.id}/>)
 
     const addPost = () => {
-        props.dispatch({type:'ADD-POST',newPostText: props.newPostText})
+        props.dispatch({type:'ADD-POST'})
 
        
     }

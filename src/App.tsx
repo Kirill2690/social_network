@@ -12,38 +12,7 @@ import {StoreType} from "./Redux/State";
 type PropsType = {
     store: StoreType
 }
-/*
-type MessageType = {
-    id: number,
-    message: string
 
-};
-
-type DialogType = {
-    id: number,
-    name: string
-};
-
-type PostType = {
-    id: number,
-    message: string,
-    likeCount: number,
-    img: string
-};
-*/
-
-
-/*
-type AppStateType = {
-    dialogs: Array<DialogType>
-    message: Array<MessageType>
-    posts: Array<PostType>
-    addPost: (postMessage: string) => void
-    newPostText: string
-    callBackNewPostText: (newPostText: string) => void
-
-};
-*/
 
 
 const App: React.FC<PropsType> = (props) => {
