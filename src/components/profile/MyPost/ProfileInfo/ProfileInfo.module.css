@@ -1,0 +1,20 @@
+.description_block{
+    padding: 10px;
+
+}
+.profileImg img {
+    width: 50%;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.mainPhoto {
+    max-width: 160px;
+    border-radius: 50%;
+}
+
+.contact {
+    padding-left: 10px;
+}
