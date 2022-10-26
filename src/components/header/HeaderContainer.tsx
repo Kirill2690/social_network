@@ -1,8 +1,8 @@
-import Header from "./Header";
-import {connect} from "react-redux";
-import {RootStateType} from "../../redux/redux-store";
-import React from "react";
-import {logout} from "../../redux/auth-reducer";
+import React from 'react';
+import Header from './Header';
+import {connect} from 'react-redux';
+import {RootStateType} from '../../redux/redux-store';
+import {logout} from '../../redux/auth-reducer';
 
 type MapStatePropsType = {
     login: string | null,

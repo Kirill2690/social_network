@@ -1,9 +1,9 @@
-import {Button} from "antd";
-import s from './AddMessageForm.module.css'
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {FC} from "react";
-import {Textarea} from "../../common/form/FormsControls";
-import {maxLengthCreator, required} from "../../../utils/validator/validators";
+import {maxLengthCreator, required} from '../../../utils/validators/validators';
+import React, {FC} from 'react';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
+import {Textarea} from '../../common/forms/FormsControls';
+import {Button} from 'antd';
+import styles from './AddMessageForm.module.css'
 
 type DialogsFormPropsType = {
     newMessageBody: string
@@ -13,7 +13,7 @@ const AddMessageForm: FC<InjectedFormProps<DialogsFormPropsType>> = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit}>
-            <div className={s.container}>
+            <div className={styles.container}>
                 <Field component={Textarea}
                        name={'newMessageBody'}
                        validate={[required, maxLength50]}

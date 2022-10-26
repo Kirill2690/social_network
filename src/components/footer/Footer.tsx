@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './Footer.module.css'
+import styles from './Footer.module.css'
 
 export const Footer = () => {
     return (
-        <div className={s.container}>
+        <div className={styles.container}>
             © 2022 All Rights Reserved
         </div>
     );

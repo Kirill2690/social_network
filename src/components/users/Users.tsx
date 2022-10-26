@@ -1,9 +1,8 @@
-import {UserType} from "../../redux/users-reducer";
-import React from "react";
-import s from './Users.module.css'
-import {Paginator} from "../common/paginator/Paginator";
-import {User} from "./User";
-
+import React from 'react';
+import {UserType} from '../../redux/users-reducer';
+import Paginator from '../common/paginator/Paginator';
+import User from './User';
+import styles from './Users.module.css'
 
 type PropsType = {
     users: Array<UserType>
@@ -17,7 +16,7 @@ type PropsType = {
     portionSize: number
 }
 
-export const Users: React.FC<PropsType> = ({
+const Users: React.FC<PropsType> = ({
                                         users,
                                         totalUsersCount,
                                         pageSize,
@@ -27,8 +26,8 @@ export const Users: React.FC<PropsType> = ({
                                         ...props
                                     }) => {
 
-    return <div className={s.container}>
-        <div className={s.users}>
+    return <div className={styles.container}>
+        <div className={styles.users}>
             {
                 users.map(u => <User key={u.id}
                                      user={u}
@@ -48,3 +47,5 @@ export const Users: React.FC<PropsType> = ({
         </div>
     </div>
 };
+
+export default Users;

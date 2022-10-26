@@ -1,15 +1,15 @@
-import Dialogs from "./Dialogs";
-import {MessageType} from "./Message/Message";
-import {RootStateType} from "../../redux/redux-store";
-import {compose, Dispatch} from "redux";
-import {sendMessageAC} from "../../redux/dialogs-reducer";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {connect} from "react-redux";
-import {DialogType} from "./Dialog/Dialog";
-import React from "react";
+import {sendMessageAC} from '../../redux/dialogs-reducer';
+import Dialogs from './Dialogs';
+import {connect} from 'react-redux';
+import {RootStateType} from '../../redux/redux-store';
+import {compose, Dispatch} from 'redux';
+import {DialogsType} from './DialogItem/DialogItem';
+import {MessageType} from './Message/Message';
+import React from 'react';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 
 type mapStateToPropsType = {
-    dialogs: Array<DialogType>,
+    dialogs: Array<DialogsType>,
     messages: Array<MessageType>,
     isAuth: boolean,
 }
@@ -20,8 +20,8 @@ type mapDispatchToPropsType = {
 
 let mapStateToProps = (state: RootStateType): mapStateToPropsType => {
     return {
-        dialogs: state.dialogsPage.dialogsData,
-        messages: state.dialogsPage.messagesData,
+        dialogs: state.dialogsPage.dialogs,
+        messages: state.dialogsPage.messages,
         isAuth: state.auth.isAuth,
     }
 }

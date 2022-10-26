@@ -3,7 +3,7 @@
     height: 100px;
 }
 
-.button {
+button {
     cursor: pointer;
 }
 
@@ -30,4 +30,3 @@
 .followUnfollowButton {
     margin: 10px;
 }
-

@@ -1,45 +1,43 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-import Dialog, {DialogType} from "./Dialog/Dialog";
-import Message, {MessageType} from "./Message/Message";
-import {Redirect} from "react-router-dom";
-import {AddMessageFormRedux} from "./addMessageForm/AddMessageForm";
+import DialogItem, {DialogsType} from './DialogItem/DialogItem';
+import Message, {MessageType} from './Message/Message';
+import {Redirect} from 'react-router-dom';
+import {AddMessageFormRedux} from './AddMessageForm/AddMessageForm';
 
-export type DialogsType = {
-    dialogs: Array<DialogType>
-    message:Array<MessageType>
-    newMessageBody:string
+type DialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+    newMessageBody: string
     sendMessage: (values: string) => void
     isAuth: boolean
-
 }
 
+const Dialogs = (props: DialogsPageType) => {
 
+    let dialogsElements = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>);
 
-const Dialogs = (props: DialogsType) => {
+    let messagesElements = props.messages.map(m => <Message key={m.id} id={m.id} message={m.message}/>);
 
-    let dialogsElements = props.dialogs.map(d => (<Dialog name={d.name} id={d.id} key={d.id} avatar={d.avatar}/>))
-
-    let messagesElements = props.message.map(m => (<Message message={m.message} key={m.id} id={m.id}/>))
-    let addMessage = (values: { newMessageBody: string }) => {
+    let addNewMessage = (values: { newMessageBody: string }) => {
         props.sendMessage(values.newMessageBody);
         values.newMessageBody = '';
     }
+
     if (!props.isAuth) return <Redirect to={'/login'}/>;
 
     return (
         <div className={s.dialogs}>
-            <div className={s.dialogs_items}>
+            <div className={s.dialogsItems}>
                 {dialogsElements}
             </div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
-               <AddMessageFormRedux onSubmit={addMessage}/>
-
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
-
     );
 };
+
 
 export default Dialogs;

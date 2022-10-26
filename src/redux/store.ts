@@ -1,151 +1,133 @@
+import {v1} from 'uuid';
 
-import {v1} from "uuid";
-
-
- type MessageType = {
-    id: string,
+type PostsType = {
+    id: number
     message: string
+    likesCount: number
+}
+type DialogsType = {
+    id: number
+    name: string
+    avatar: string
+}
+type MessageType = {
+    id: string
+    message: string
+}
 
-};
+type ProfilePageType = {
+    messageForNewPost: string
+    posts: Array<PostsType>
+}
 
- type DialogType = {
-    id: number,
-    name: string,
-     avatar:string
-};
+type DialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+    newMessageBody: string
+}
 
-export type PostType = {
-    id: string,
-    message: string,
-    likeCount: number,
-    img: string
-};
+type SidebarType = {}
 
-export type DialogsPageType={
-    newMessageBody: string,
-    messagesData: Array<MessageType>
-    dialogsData: Array<DialogType>
-};
-export type ProfilePageType={
-    newPostText: string,
-    posts: Array<PostType>
-};
-export type RootStateType = {
-    dialogsPage:DialogsPageType
-    profilePage:ProfilePageType
-};
+type RootStateType = {
+    profilePage: ProfilePageType
+    dialogsPage: DialogsPageType
+    sidebar: SidebarType
+}
 
-
-export type StoreType = {
-    _state: RootStateType,
-    onChange: () => void,
-    subscribe: (callback: () => void) => void
+type StoreType = {
+    _state: RootStateType
+    _callSubscriber: (observer: RootStateType) => void
+    // addPost: (postText: string) => void
+    // updateNewPostText: (newText: string) => void
+    subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    /*dispatch: (action: ActionsType) => void*/
-
-}
-/*type AddPostActionType = ReturnType<typeof addPostAC>
-type ChangeNewTextActionType = ReturnType<typeof changeNewTextAC>
-type UpdateNewMessageActionType = ReturnType<typeof updateMessageAC>
-type SendMessageActionType = ReturnType<typeof sendMessageAC>
-export type ActionsType =
-    AddPostActionType
-    | ChangeNewTextActionType
-    | UpdateNewMessageActionType
-    | SendMessageActionType
-
-export const addPostAC = (postText:string) => {
-    return {
-        type: 'ADD-POST',
-        postText: postText
-
-    } as const
+    // dispatch: (action: ActionsTypes) => void
 }
 
-export const changeNewTextAC = (newText: string) => {
-    return {
-        type: 'CHANGE-NEW-TEXT',
-        newText: newText
+// type ActionsTypes = ActionsProfileTypes | ActionsDialogsTypes | ActionsUsersTypes
 
-    } as const
-}
-
-export const updateMessageAC = (body: string) => {
-    return {
-        type: 'UPDATE-MESSAGE',
-        body: body
-    } as const
-}
-export const sendMessageAC = () => {
-    return {
-        type: 'SEND-MESSAGE',
-
-
-    } as const
-}*/
+//     ReturnType<typeof addPostAC>
+//     | ReturnType<typeof updateNewPostTextAC>
+//     | ReturnType<typeof updateNewMessageBodyAC>
+//     | ReturnType<typeof sendMessageAC>
+//
+// export const addPostAC = (postText: string) => {
+//     return {
+//         type: 'ADD-POST',
+//         postText: postText
+//     } as const
+// }
+//
+// export const updateNewPostTextAC = (newText: string) => {
+//     return {
+//         type: 'UPDATE-NEW-POST-TEXT',
+//         newText: newText
+//     } as const
+// }
+//
+// export const updateNewMessageBodyAC = (body: string) => {
+//     return {
+//         type: 'UPDATE-NEW-MESSAGE-BODY',
+//         body: body
+//     } as const
+// }
+//
+// export const sendMessageAC = () => {
+//     return {
+//         type: 'SEND-MESSAGE'
+//     } as const
+// }
 
 
 const store: StoreType = {
     _state: {
         profilePage: {
-            newPostText: '',
+            messageForNewPost: '',
             posts: [
-                {
-                    id:v1() ,
-                    message: 'Hi,how are you?',
-                    likeCount: 10,
-                    img: 'https://shapka-youtube.ru/wp-content/uploads/2021/02/prikolnaya-avatarka-dlya-devushek.jpg'
-                },
-                {
-                    id: v1(),
-                    message: 'Hello',
-                    likeCount: 15,
-                    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_d4t6iILWhDGYDrjudm76-kC7P77d3zZqQ&usqp=CAU'
-                }
+                {id: 1, message: 'Hi, how are you?', likesCount: 0},
+                {id: 2, message: 'It\'s my first post', likesCount: 23},
             ],
-
         },
-
         dialogsPage: {
-            dialogsData: [
-                {id: 1, name: 'Kirill',avatar:'https://klike.net/uploads/posts/2019-03/medium/1551511791_8.jpg'},
-                {id: 2, name: 'Natalia',avatar:'https://klike.net/uploads/posts/2019-03/medium/1551511789_7.jpg'},
-                {id: 3, name: 'Varvara',avatar:'https://klike.net/uploads/posts/2019-03/1551515537_52.jpeg'},
-                {id: 4, name: 'Victor',avatar:'https://klike.net/uploads/posts/2019-03/medium/1551511818_27.jpg'},
-                {id: 5, name: 'Bob',avatar:'https://klike.net/uploads/posts/2019-03/1551511868_36.jpg'},
-                {id: 6, name: 'Donald',avatar:'https://klike.net/uploads/posts/2022-08/1661144186_2.jpg'}
-
+            dialogs: [
+                {id: 1, name: 'Denis', avatar: 'https://klike.net/uploads/posts/2019-03/1551511856_25.jpg'},
+                {id: 2, name: 'Eugene', avatar: 'https://klike.net/uploads/posts/2019-03/1551515594_15.jpg'},
+                {id: 3, name: 'Olya', avatar: 'https://klike.net/uploads/posts/2019-03/1551511808_5.jpg'},
+                {id: 4, name: 'Zhesha', avatar: 'https://klike.net/uploads/posts/2019-03/1551511823_2.jpg'},
+                {id: 5, name: 'Kostya', avatar: 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg'},
+                {id: 6, name: 'Ira', avatar: 'https://klike.net/uploads/posts/2019-03/1551511784_4.jpg'},
             ],
-
-            messagesData: [
-                {id: v1(), message: 'Hi)'},
-                {id: v1(), message: 'Yo!'},
-                {id: v1(), message: 'Goodbye!'},
-                {id: v1(), message: 'Good!'},
-                {id: v1(), message: 'NO!'}
-
+            messages: [
+                {id: v1(), message: 'Hi'},
+                {id: v1(), message: 'How are you?'},
+                {id: v1(), message: 'Yo'},
+                {id: v1(), message: 'Yo'},
+                {id: v1(), message: 'Yo'},
             ],
             newMessageBody: ''
-        }
+        },
+        sidebar: {}
     },
-    onChange() {
-        console.log('state changed')
+    _callSubscriber() {
+        console.log('State was changed');
     },
-    subscribe(observer) {
-        this.onChange = observer
-    },
+
     getState() {
         return this._state
     },
-    /*dispatch(action) {
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-        this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this.onChange()
+    subscribe(observer: () => void) {
+        this._callSubscriber = observer;
+    },
 
-    }*/
+    // dispatch(action) {
+
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
+        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+        // this._callSubscriber(this._state)
+
+    // }
 }
 
-
 export default store;
-
-

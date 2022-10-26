@@ -4,7 +4,7 @@ import {useFormik} from 'formik';
 import {Button, Checkbox, Input, Space} from 'antd';
 import {Redirect} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../redux/redux-store';
-import s from './Login.module.css'
+import styles from './Login.module.css'
 import {EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 
 type FormikErrorType = {
@@ -50,8 +50,8 @@ export const LoginForm = () => {
     }
 
     return (
-        <div className={s.wrapper}>
-            <div className={s.info}>
+        <div className={styles.wrapper}>
+            <div className={styles.info}>
                 <p>To log in get registered <a href={'https://social-network.samuraijs.com/'}
                                                target={'_blank'} rel="noopener noreferrer">here</a> or
                     use common test
@@ -59,15 +59,15 @@ export const LoginForm = () => {
                 <p>Email: free@samuraijs.com</p>
                 <p>Password: free</p>
             </div>
-            <div className={s.container}>
-                <h1 className={s.login}>Login</h1>
-                <form onSubmit={formik.handleSubmit} className={s.form}>
+            <div className={styles.container}>
+                <h1 className={styles.login}>Login</h1>
+                <form onSubmit={formik.handleSubmit} className={styles.form}>
                     <Space direction="vertical">
                         <Input placeholder="Login"
                                {...formik.getFieldProps('email')}
                         />
                         {formik.errors.email && formik.touched.email &&
-                            <div className={s.error}>{formik.errors.email}</div>}
+                            <div className={styles.error}>{formik.errors.email}</div>}
 
                         <Input.Password
                             placeholder="Password"
@@ -76,15 +76,15 @@ export const LoginForm = () => {
                         />
                     </Space>
                     {formik.errors.password && formik.touched.password &&
-                        <div className={s.error}>{formik.errors.password}</div>}
-                    <div className={s.rememberMe}>
+                        <div className={styles.error}>{formik.errors.password}</div>}
+                    <div className={styles.rememberMe}>
                         <Checkbox
                             checked={formik.values.rememberMe}
                             {...formik.getFieldProps('rememberMe')}
                         /> Remember me
                     </div>
                     {captchaUrl && <img src={captchaUrl} alt={'captcha'}/>}
-                    {captchaUrl && <input className={s.captchaInput}
+                    {captchaUrl && <input className={styles.captchaInput}
                                           {...formik.getFieldProps('captchaUrl')}
                     />}
                     <Button type={'default'} shape={'round'} htmlType="submit">Login</Button>

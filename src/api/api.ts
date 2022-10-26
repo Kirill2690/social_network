@@ -1,6 +1,6 @@
-import axios, {AxiosResponse} from "axios";
-import {UserType} from "../redux/users-reducer";
-import {ProfileType} from "../components/profile/ProfileContainer";
+import axios, {AxiosResponse} from 'axios';
+import {UserType} from '../redux/users-reducer';
+import {ProfileType} from '../components/profile/ProfileContainer';
 
 const instance = axios.create({
     withCredentials: true,

@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import s from './Header.module.css';
-import {useAppDispatch, useAppSelector} from "../../redux/redux-store";
-import {profileAPI} from "../../api/api";
-import {setUserPhotos} from "../../redux/profile-reducer";
-import social from '../../assets/images/social.png';
-import userPhoto from '../../assets/images/userPhoto.png'
-import {Button} from "antd";
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import {Button} from 'antd';
+import userPhoto from '../../assets/images/user.png';
+import social from '../../assets/images/1024b.png'
+import {useAppDispatch, useAppSelector} from '../../redux/redux-store';
+
 
 type HeaderPropsType = {
     isAuth: boolean,
@@ -20,14 +19,14 @@ const Header: React.FC<HeaderPropsType> = (props) => {
     const userProfile = useAppSelector(state => state.profilePage)
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (Object.entries(userProfile).length) profileAPI.getProfile(userId).then((res) => dispatch(setUserPhotos(res.data.photos || '')))
-    }, [])
+    }, [])*/
 
     return (
         <header className={s.header}>
             <img className={s.logo} src={social} alt={'social network img'}/>
-            <div className={s.title}>Social Network</div>
+            <div className={s.title}>Football social life</div>
             <div className={s.loginBlock}>
                 {props.isAuth
                     ? <div className={s.logout}>{props.login} {<img className={s.avatar} src={photo || userPhoto}

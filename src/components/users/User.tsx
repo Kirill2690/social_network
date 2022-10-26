@@ -1,9 +1,9 @@
-import React from "react";
-import {UserType} from "../../redux/users-reducer";
-import s from './Users.module.css'
-import {NavLink} from "react-router-dom";
-import {Button} from "antd";
-import userPhoto from '../../assets/images/833.jpg'
+import React from 'react';
+import styles from './Users.module.css';
+import userPhoto from '../../assets/images/user.png';
+import {NavLink} from 'react-router-dom';
+import {UserType} from '../../redux/users-reducer';
+import {Button} from 'antd';
 
 type PropsType = {
     user: UserType
@@ -12,25 +12,25 @@ type PropsType = {
     followingInProgress: number[]
 }
 
-export const User: React.FC<PropsType> = ({user, followingInProgress, follow, unfollow}) => {
+const User: React.FC<PropsType> = ({user, followingInProgress, follow, unfollow}) => {
 
     return (
-        <div className={s.user}>
+        <div className={styles.user}>
                 <span>
                     <div>
                         <NavLink to={'/profile/' + user.id}>
                         <img src={user.photos.small != null ? user.photos.small : userPhoto} alt={`user's avatar`}
-                             className={s.userPhoto}/>
+                             className={styles.userPhoto}/>
                         </NavLink>
                     </div>
                     <div>
                         {user.followed
-                            ? <Button className={s.followUnfollowButton} type={'default'} shape={'round'}
+                            ? <Button className={styles.followUnfollowButton} type={'default'} shape={'round'}
                                       disabled={followingInProgress
                                           .some(id => id === user.id)} onClick={() => {
                                 unfollow(user.id)
                             }}>Unfollow</Button>
-                            : <Button className={s.followUnfollowButton} type={'default'} shape={'round'}
+                            : <Button className={styles.followUnfollowButton} type={'default'} shape={'round'}
                                       disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
                                 follow(user.id)
                             }}>Follow</Button>}
@@ -49,3 +49,5 @@ export const User: React.FC<PropsType> = ({user, followingInProgress, follow, un
         </div>
     );
 };
+
+export default User;

@@ -1,9 +1,10 @@
-import {follow, requestUsers, setCurrentPage, unfollow, UserType} from "../../redux/users-reducer";
-import React from "react";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import {RootStateType} from "../../redux/redux-store";
-
+import React from 'react';
+import {connect} from 'react-redux';
+import {follow, requestUsers, setCurrentPage, unfollow, UserType} from '../../redux/users-reducer';
+import {RootStateType} from '../../redux/redux-store';
+import Users from './Users';
+import {Preloader} from '../common/preloader/Preloader';
+import {compose} from 'redux';
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -12,11 +13,6 @@ import {
     getTotalUsersCount,
     getUsers,
 } from '../../redux/users-selectors';
-import {Preloader} from "../common/preloader/Preloader";
-import {Users} from "./Users";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {withRouter} from "react-router-dom";
-
 
 type MapStatePropsType = {
     usersPage: Array<UserType>,
@@ -85,6 +81,4 @@ export default compose<React.ComponentType>(
         setCurrentPage,
         requestUsers,
     }),
-    withAuthRedirect,
-    withRouter
 )(UsersContainer)

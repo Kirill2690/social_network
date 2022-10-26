@@ -1,11 +1,11 @@
-import {compose} from "redux";
-import {RootStateType} from "../../redux/redux-store";
-import {connect} from "react-redux";
-import React from "react";
-import {Profile} from "./Profile";
-import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../redux/profile-reducer";
-import {RouteComponentProps, withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import React from 'react';
+import Profile from './Profile';
+import {connect} from 'react-redux';
+import {RootStateType} from '../../redux/redux-store';
+import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from '../../redux/profile-reducer';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
+import {compose} from 'redux';
 
 export type ProfileType = {
     aboutMe?: string
@@ -112,5 +112,5 @@ export default compose<React.ComponentType>(
         saveProfile,
     }),
     withRouter,
-    withAuthRedirect
+    withAuthRedirect,
 )(ProfileContainer);
