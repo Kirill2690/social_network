@@ -2,15 +2,16 @@ import {v1} from 'uuid';
 import {ActionsTypes} from './redux-store';
 import {DialogsType} from '../components/dialogs/DialogItem/DialogItem';
 import {MessageType} from '../components/dialogs/Message/Message';
+import mpappe_img from '../assets/images/mbappe_2.png'
+import messi_img from '../assets/images/messi.png'
+import ronaldo_img from '../assets/images/ronaldo7.png'
+
 
 let initialState = {
     dialogs: [
-        {id: 1, name: 'Denis', avatar: 'https://klike.net/uploads/posts/2019-03/1551511856_25.jpg'},
-        {id: 2, name: 'Eugene', avatar: 'https://klike.net/uploads/posts/2019-03/1551515594_15.jpg'},
-        {id: 3, name: 'Olya', avatar: 'https://klike.net/uploads/posts/2019-03/1551511808_5.jpg'},
-        {id: 4, name: 'Zhesha', avatar: 'https://klike.net/uploads/posts/2019-03/1551511823_2.jpg'},
-        {id: 5, name: 'Kostya', avatar: 'https://klike.net/uploads/posts/2019-03/1551511801_1.jpg'},
-        {id: 6, name: 'Ira', avatar: 'https://klike.net/uploads/posts/2019-03/1551511784_4.jpg'},
+        {id: 1, name: 'Mbappe', avatar:mpappe_img},
+        {id: 2, name: 'Messi', avatar: messi_img},
+        {id: 3, name: 'CR7', avatar: ronaldo_img},
     ] as Array<DialogsType>,
     messages: [
         {id: v1(), message: 'Hi'},

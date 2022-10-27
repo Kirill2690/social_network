@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SamuraiJSApp from './App';
+import {SocialFNApp} from "./App";
+
 
 ReactDOM.render(
-    <SamuraiJSApp/>,
+    <SocialFNApp/>,
     document.getElementById('root')
 );
