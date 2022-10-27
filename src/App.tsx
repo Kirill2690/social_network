@@ -12,7 +12,6 @@ import {compose} from 'redux';
 import {initializeApp} from './redux/app-reducer';
 import {Preloader} from './components/common/preloader/Preloader';
 import {withSuspense} from './hoc/withSuspense';
-import {LoginForm} from './components/login/Login';
 import {notification} from 'antd';
 import {Footer} from './components/footer/Footer';
 import {Error404} from './components/common/error404/Error404';
@@ -20,7 +19,7 @@ import {Error404} from './components/common/error404/Error404';
 const DialogsContainer = React.lazy(() => import('./components/dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/users/UsersContainer'));
-// const LoginPage = React.lazy(() => import('./components/login/login'));
+/*// const LoginPage = React.lazy(() => import('./components/login/login'));*/
 
 type MapStatePropsType = {
     initialized: boolean,
@@ -80,7 +79,7 @@ class App extends React.Component<AppPropsType> {
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
-                    <Route path="/login" render={withSuspense(LoginForm)}/>
+                    {/*<Route path="/login" render={withSuspense(LoginForm)}/>*/}
                     <Route path={'*'} render={() => <div><Error404/></div>}/>
                 </Switch>
                 <Footer/>
