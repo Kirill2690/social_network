@@ -1,5 +1,28 @@
 .container {
-    display: flex;
-    justify-content: center;
+    display:  flex;;
     align-items: center;
+}
+
+a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: #1890ff 0 0 2px;
+    font-size: 47px;
+}
+
+a:hover {
+    background-size: 100% 2px;
+    color: white;
+}
+
+.wrapper{
+    display: grid;
+    margin: 10px auto;
+
+
 }
