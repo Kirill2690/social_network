@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Dialogs.module.css'
+import styles from './Dialogs.module.css'
 import DialogItem, {DialogsType} from './DialogItem/DialogItem';
 import Message, {MessageType} from './Message/Message';
 import {Redirect} from 'react-router-dom';
@@ -27,11 +27,11 @@ const Dialogs = (props: DialogsPageType) => {
     if (!props.isAuth) return <Redirect to={'/login'}/>;
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
+        <div className={styles.dialogs}>
+            <div className={styles.dialogsItems}>
                 {dialogsElements}
             </div>
-            <div className={s.messages}>
+            <div className={styles.messages}>
                 <div>{messagesElements}</div>
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>

@@ -16,21 +16,21 @@ const ProfileDataForm = (props: InjectedFormProps<ProfileType>) => {
             </div>}
         </div>
         <div>
-            <b>Full name: </b> {createField('Full name', 'fullName', [], Input)}
+            <span className={style.title}>Full name: </span> {createField('Full name', 'fullName', [], Input)}
         </div>
         <div>
-            <b>Looking For A Job: </b> {createField('', 'lookingForAJob', [], Input, {type: 'checkbox'})}
+            <div className={style.title}>Looking For A Job: </div> {createField('', 'lookingForAJob', [], Input, {type: 'checkbox'})}
         </div>
 
         <div>
-            <b>My professional
-                skills: </b> {createField('My professional skills', 'lookingForAJobDescription', [], Textarea)}
+            <span className={style.title}>My professional
+                skills: </span> {createField('My professional skills', 'lookingForAJobDescription', [], Textarea)}
         </div>
         <div>
-            <b>About me: </b> {createField('About me', 'aboutMe', [], Textarea)}
+            <span className={style.title}>About me: </span> {createField('About me', 'aboutMe', [], Textarea)}
         </div>
         <div>
-            <b>Contacts: </b> {Object.keys(initialValues.contacts ?? {}).map(key => {
+            <span className={style.title}>Contacts: </span> {Object.keys(initialValues.contacts ?? {}).map(key => {
             return <div key={key} className={s.contact}>
                 <b>{key}: {createField(key, 'contacts.' + key, [], Input)}</b>
             </div>

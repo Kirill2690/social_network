@@ -31,7 +31,7 @@ const ProfileStatusWithHooks: FC<ProfileStatusPropsType> = (props) => {
         <div className={styles.status}>
             {!editMode &&
                 < div>
-                    <b>Status:</b> <span onDoubleClick={activateEditMode}> {props.status || '-----'}</span>
+                    <span style={{color:"white"}}>Status:</span> <span onDoubleClick={activateEditMode}> {props.status || '-----'}</span>
                 </div>
             }
             {editMode &&

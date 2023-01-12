@@ -37,47 +37,10 @@ type RootStateType = {
 type StoreType = {
     _state: RootStateType
     _callSubscriber: (observer: RootStateType) => void
-    // addPost: (postText: string) => void
-    // updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    // dispatch: (action: ActionsTypes) => void
+
 }
-
-// type ActionsTypes = ActionsProfileTypes | ActionsDialogsTypes | ActionsUsersTypes
-
-//     ReturnType<typeof addPostAC>
-//     | ReturnType<typeof updateNewPostTextAC>
-//     | ReturnType<typeof updateNewMessageBodyAC>
-//     | ReturnType<typeof sendMessageAC>
-//
-// export const addPostAC = (postText: string) => {
-//     return {
-//         type: 'ADD-POST',
-//         postText: postText
-//     } as const
-// }
-//
-// export const updateNewPostTextAC = (newText: string) => {
-//     return {
-//         type: 'UPDATE-NEW-POST-TEXT',
-//         newText: newText
-//     } as const
-// }
-//
-// export const updateNewMessageBodyAC = (body: string) => {
-//     return {
-//         type: 'UPDATE-NEW-MESSAGE-BODY',
-//         body: body
-//     } as const
-// }
-//
-// export const sendMessageAC = () => {
-//     return {
-//         type: 'SEND-MESSAGE'
-//     } as const
-// }
-
 
 const store: StoreType = {
     _state: {
@@ -119,15 +82,6 @@ const store: StoreType = {
         this._callSubscriber = observer;
     },
 
-    // dispatch(action) {
-
-        // this._state.profilePage = profileReducer(this._state.profilePage, action)
-        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        // this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-
-        // this._callSubscriber(this._state)
-
-    // }
 }
 
 export default store;

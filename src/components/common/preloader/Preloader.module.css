@@ -1,6 +1,14 @@
-.preloader {
+.preloaderContainer {
     position: fixed;
-    top: 30%;
-    left: 50%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #F2F2F2;
+}
+.preloaderBox {
+    position: relative;
+    top: 35%;
+    text-align: center;
     width: 100%;
 }

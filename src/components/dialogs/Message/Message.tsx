@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './../Dialogs.module.css'
+import styles from './../Dialogs.module.css'
 
 export type MessageType = {
     id: string
@@ -8,7 +8,7 @@ export type MessageType = {
 
 const Message = (props: MessageType) => {
     return (
-        <div className={s.message}>
+        <div className={styles.message}>
             {props.message}
         </div>
     )

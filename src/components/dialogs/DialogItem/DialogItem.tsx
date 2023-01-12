@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './../Dialogs.module.css'
+import styles from './../Dialogs.module.css'
 import {NavLink} from 'react-router-dom';
 
 export type DialogsType = {
@@ -11,9 +11,9 @@ export type DialogsType = {
 const DialogItem = (props: DialogsType) => {
     let path = '/dialogs/' + props.id
     return (
-        <div className={s.dialog + ' ' + s.active}>
-            <img className={s.avatar} src={props.avatar} alt={'avatar'}/>
-            <NavLink to={path}>{props.name}</NavLink>
+        <div className={styles.dialog + ' ' + styles.active}>
+            <img className={styles.avatar} src={props.avatar} alt={'avatar'}/>
+            <NavLink to={path}><span className={styles.name}>{props.name}</span></NavLink>
         </div>
     )
 }

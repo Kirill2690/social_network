@@ -1,4 +1,9 @@
 .container {
     display: flex;
-    width: 430px;
+    justify-items: center;
+    align-items: center;
+    width: 730px;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #dddddd;
 }

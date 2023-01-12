@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {SocialFNApp} from "./App";
+import {SocialFootballApp} from "./App";
 
 
 ReactDOM.render(
-    <SocialFNApp/>,
+    <SocialFootballApp/>,
     document.getElementById('root')
 );

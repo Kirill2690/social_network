@@ -20,7 +20,7 @@ import {LoginForm} from "./components/login/Login";
 const DialogsContainer = React.lazy(() => import('./components/dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/users/UsersContainer'));
-/*const LoginPage = React.lazy(() => import('./components/login/Login'))*/
+
 
 type MapStatePropsType = {
     initialized: boolean,
@@ -35,7 +35,6 @@ export type AppPropsType = MapStatePropsType & MapDispatchToPropsType
 
 class App extends React.Component<AppPropsType> {
     catchAllUnhandledErrors = (promiseRejectionEvent: PromiseRejectionEvent) => {
-        // alert('Some error occured');
         console.error(promiseRejectionEvent)
     }
 
@@ -71,15 +70,15 @@ class App extends React.Component<AppPropsType> {
                 <HeaderContainer/>
                 <Navbar/>
                 <Switch>
-                    <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
-                    <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
+                    <Route exact path="/" render={() => <Redirect to={'/login'}/>}/>
+                    <Route path="/login" render={withSuspense(LoginForm)}/>
                     <Route path="/profile/:userId?"
                            render={withSuspense(ProfileContainer)}/>
+                    <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
                     <Route path="/users" render={withSuspense(UsersContainer)}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
-                    <Route path="/login" render={withSuspense(LoginForm)}/>
                     <Route path={'*'} render={() => <div><Error404/></div>}/>
                 </Switch>
                 <Footer/>
@@ -96,7 +95,7 @@ const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
 
 let AppContainer = compose<React.ComponentType>(withRouter, connect<MapStatePropsType, MapDispatchToPropsType, {}, RootStateType>(mapStateToProps, {initializeApp}))(App);
 
-export const SocialFNApp = () => {
+export const SocialFootballApp = () => {
     return <HashRouter>
         <Provider store={store}>
             <AppContainer/>

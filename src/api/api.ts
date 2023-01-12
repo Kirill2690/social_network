@@ -17,10 +17,10 @@ export const usersAPI = {
         })
     },
     follow(userId: number) {
-        return instance.post<'', AxiosResponse<UserType>>(`follow/${userId}`)
+        return instance.post<AxiosResponse<UserType>>(`follow/${userId}`)
     },
     unfollow(userId: number) {
-        return instance.delete<'', AxiosResponse<UserType>>(`follow/${userId}`)
+        return instance.delete<AxiosResponse<UserType>>(`follow/${userId}`)
     },
     getProfile(userId: number | null) {
         console.log('Obsolete method. Please use profileAPI object.')

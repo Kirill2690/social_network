@@ -1,15 +1,25 @@
 .nav {
+    height: 390px;
+    width: 200px;
     grid-area: n;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #dddddd;
+    padding: 30px;
+    margin-bottom: 20px;
 }
 
 .item a {
-    font-size: 20px;
+    font-size: 25px;
     color: white;
-    text-decoration: none;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
 }
 
 .item a.activeLink {
-    color: gold;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: #1890ff 0 0 2px;
+
+    box-sizing: border-box;
 }
+

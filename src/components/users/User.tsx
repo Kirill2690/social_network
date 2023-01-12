@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './Users.module.css';
-import userPhoto from '../../assets/images/user.png';
+import userPhoto from '../../assets/images/profile.png';
 import {NavLink} from 'react-router-dom';
 import {UserType} from '../../redux/users-reducer';
 import {Button} from 'antd';
+import {UserAddOutlined, UserDeleteOutlined} from "@ant-design/icons";
 
 type PropsType = {
     user: UserType
@@ -25,15 +26,15 @@ const User: React.FC<PropsType> = ({user, followingInProgress, follow, unfollow}
                     </div>
                     <div>
                         {user.followed
-                            ? <Button className={styles.followUnfollowButton} type={'default'} shape={'round'}
+                            ? <Button className={styles.followUnfollowButton} type={'primary'}
                                       disabled={followingInProgress
                                           .some(id => id === user.id)} onClick={() => {
                                 unfollow(user.id)
-                            }}>Unfollow</Button>
-                            : <Button className={styles.followUnfollowButton} type={'default'} shape={'round'}
+                            }}><UserDeleteOutlined/>Unfollow</Button>
+                            : <Button className={styles.followUnfollowButton} type={'primary'}
                                       disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
                                 follow(user.id)
-                            }}>Follow</Button>}
+                            }}><UserAddOutlined/>Follow</Button>}
                                 </div>
                 </span>
             <span>

@@ -1,6 +1,6 @@
 .userPhoto {
     width: 100px;
-    height: 100px;
+    max-height: 90px;
 }
 
 button {
@@ -12,6 +12,8 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #dddddd;
 }
 
 .users {
@@ -22,9 +24,16 @@ button {
 
 .user {
     text-align: center;
+    background-color: rgba(0.1, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     width: 230px;
-    height: 250px;
-    margin: 10px;
+    height: 230px;
+    margin: 5px;
+    box-shadow:rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: #1890ff 0 0 2px;
 }
 
 .followUnfollowButton {

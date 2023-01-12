@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './Header.module.css';
+import styles from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import {Button} from 'antd';
 import userPhoto from '../../assets/images/user.png';
-import social from '../../assets/images/1024b.png'
-import {useAppDispatch, useAppSelector} from '../../redux/redux-store';
+import social from '../../assets/images/CR_Messi.png'
+import {useAppSelector} from '../../redux/redux-store';
 
 
 type HeaderPropsType = {
@@ -14,22 +14,16 @@ type HeaderPropsType = {
 }
 
 const Header: React.FC<HeaderPropsType> = (props) => {
-    const userId = useAppSelector(state => state.auth.userId)
-    const photo = useAppSelector(state => state.profilePage.profile.photos?.small)
-    const userProfile = useAppSelector(state => state.profilePage)
-    const dispatch = useAppDispatch()
 
-    /*useEffect(() => {
-        if (Object.entries(userProfile).length) profileAPI.getProfile(userId).then((res) => dispatch(setUserPhotos(res.data.photos || '')))
-    }, [])*/
+    const photo = useAppSelector(state => state.profilePage.profile.photos?.small)
 
     return (
-        <header className={s.header}>
-            <img className={s.logo} src={social} alt={'social network img'}/>
-            <div className={s.title}>Football social life</div>
-            <div className={s.loginBlock}>
+        <header className={styles.header}>
+            <img className={styles.logo} src={social} alt={'social network img'}/>
+            <div className={styles.title}>⚽Football social life⚽</div>
+            <div className={styles.loginBlock}>
                 {props.isAuth
-                    ? <div className={s.logout}>{props.login} {<img className={s.avatar} src={photo || userPhoto}
+                    ? <div className={styles.logout}>{props.login} {<img className={styles.avatar} src={photo || userPhoto}
                                                                     alt={'avatar'}/>}
                         <Button
                             type={'default'}
@@ -38,7 +32,10 @@ const Header: React.FC<HeaderPropsType> = (props) => {
                         >Log out
                         </Button>
                     </div>
-                    : <NavLink to={'/login'}>Login</NavLink>}
+                    :<div className={styles.logout}>
+                        <NavLink  style={{ textDecoration: 'none' }} to={'/login'}></NavLink>
+                    </div>
+                   }
             </div>
         </header>
     );

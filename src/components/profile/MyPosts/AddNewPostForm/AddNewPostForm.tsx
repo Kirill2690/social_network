@@ -2,7 +2,6 @@ import React, {FC} from 'react';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import {Textarea} from '../../../common/forms/FormsControls';
 import {maxLengthCreator, required} from '../../../../utils/validators/validators';
-import {Button} from 'antd';
 import styles from './AddNewPostForm.module.css'
 
 type MyPostFormPropsType = {
@@ -22,7 +21,7 @@ const AddNewPostForm: FC<InjectedFormProps<MyPostFormPropsType>> = (props) => {
                     rows={3}
                 />
                 <div>
-                    <Button htmlType={'submit'} type={'default'} shape={'round'}>Add post</Button>
+                    <button className={styles.button} type={'submit'}>Add post</button>
                 </div>
             </div>
         </form>

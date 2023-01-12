@@ -1,5 +1,6 @@
 import React from 'react';
-import s from './Post.module.css';
+import styles from './Post.module.css';
+import {useAppSelector} from "../../../../redux/redux-store";
 
 export type PostsType = {
     id: number
@@ -9,12 +10,14 @@ export type PostsType = {
 
 const Post = (props: PostsType) => {
 
+    const photo = useAppSelector(state => state.profilePage.profile.photos?.small)
+
     return (
-        <div className={s.item}>
-            <img src={'https://www.meme-arsenal.com/memes/be50e6ba99654b5455027dcc82beb5b3.jpg'} alt={'ava'}/>
+        <div className={styles.item}>
+            <img src={photo} alt={'ava'}/>
             { props.message }
             <div>
-                <span>like</span> { props.likesCount }
+                <span>❤{props.likesCount}️</span>
             </div>
         </div>
     );

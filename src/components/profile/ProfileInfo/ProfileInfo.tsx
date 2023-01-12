@@ -3,10 +3,10 @@ import s from './ProfileInfo.module.css'
 import {Preloader} from '../../common/preloader/Preloader';
 import {ContactsType, ProfileType} from '../ProfileContainer';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
-import userPhoto from '../../../assets/images/user.png';
+import userPhoto from '../../../assets/images/profile.png';
 import ProfileDataForm from './ProfileDataForm';
 import {Button} from 'antd';
-import {DownloadOutlined} from '@ant-design/icons';
+import {CameraOutlined} from '@ant-design/icons';
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -49,14 +49,14 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
             <div className={s.descriptionBlock}>
                 <div className={s.avatar}>
                     <img src={profile.photos?.large || userPhoto} className={s.mainPhoto} alt={'large avatar'}/>
-                </div>
-                <div>
-                    <Button
-                        type="default"
-                        shape="circle"
-                        icon={<DownloadOutlined/>}
-                        onClick={() => ref.current?.click()}
-                    />
+                    <div className={s.camera_button}>
+                        <Button
+                            type="default"
+                            shape="circle"
+                            icon={<CameraOutlined/>}
+                            onClick={() => ref.current?.click()}
+                        />
+                    </div>
                 </div>
                 {isOwner &&
                     <input
@@ -89,25 +89,25 @@ type ProfileDataType = {
 }
 
 const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}) => {
-    return <div>
+    return <div className={s.contact}>
         {isOwner && <div>
             <Button type="default" shape="round" onClick={goToEditMode}>edit</Button>
         </div>}
         <div>
-            <b>Full name: </b> {profile.fullName}
+            <span className={s.title}>Full name: </span> {profile.fullName}
         </div>
         <div>
-            <b>Looking For A Job: </b>{profile.lookingForAJob ? 'yes' : 'no'}
+            <span className={s.title}>Looking For A Job: </span>{profile.lookingForAJob ? 'yes' : 'no'}
         </div>
         {profile.lookingForAJob &&
             <div>
-                <b>My professional skills: </b> {profile.lookingForAJobDescription}
+                <span className={s.title}>My professional skills: </span> {profile.lookingForAJobDescription}
             </div>}
         <div>
-            <b>About Me: </b> {profile.aboutMe}
+            <span className={s.title}>About Me: </span> {profile.aboutMe}
         </div>
         <div>
-            <b>Contacts: </b> {profile.contacts && Object.keys(profile.contacts).map(key => {
+            <span className={s.title}>Contacts: </span> {profile.contacts && Object.keys(profile.contacts).map(key => {
 
             return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]}/>
         })}
@@ -116,7 +116,7 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
 }
 
 const Contact: React.FC<ContactType> = ({contactTitle, contactValue}) => {
-    return <div className={s.contact}><b>{contactTitle}: </b> {contactValue}</div>
+    return <div className={s.contact}><span className={s.title}>{contactTitle}: </span> {contactValue}</div>
 }
 
 export default ProfileInfo;

@@ -68,7 +68,6 @@ export const LoginForm = () => {
                         />
                         {formik.errors.email && formik.touched.email &&
                             <div className={styles.error}>{formik.errors.email}</div>}
-
                         <Input.Password
                             placeholder="Password"
                             {...formik.getFieldProps('password')}

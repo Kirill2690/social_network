@@ -1,20 +1,36 @@
 .descriptionBlock {
     padding: 10px;
+
 }
 
 .profileImg img {
     width: 100%;
+    display: flex;
+}
+
+.camera_button{
+    padding-left: 30px;
+
 }
 
 .avatar {
     text-align: center;
+    width: 220px;
+    height: 220px;
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .mainPhoto {
-    max-width: 160px;
+    max-width: 120px;
     border-radius: 50%;
 }
 
 .contact {
-    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.title{
+    font-size: 16px;
+    color: honeydew;
 }
