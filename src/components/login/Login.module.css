@@ -2,6 +2,8 @@
     display: flex;
     flex-direction:column;
     align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #dddddd;
 }
 
 .info {

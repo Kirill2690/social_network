@@ -1,7 +1,7 @@
 import React from 'react';
 import {login} from '../../redux/auth-reducer';
 import {useFormik} from 'formik';
-import {Button, Checkbox, Input, Space} from 'antd';
+import {Checkbox, Input, Space} from 'antd';
 import {Redirect} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../redux/redux-store';
 import styles from './Login.module.css'
@@ -86,7 +86,7 @@ export const LoginForm = () => {
                     {captchaUrl && <input className={styles.captchaInput}
                                           {...formik.getFieldProps('captchaUrl')}
                     />}
-                    <Button type={'default'} shape={'round'} htmlType="submit">Login</Button>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </div>

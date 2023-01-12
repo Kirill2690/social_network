@@ -1,18 +1,18 @@
 .descriptionBlock {
+    display: flex;;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: #1890ff 0 0 2px;
     padding: 10px;
-
 }
 
 .profileImg img {
     width: 100%;
-    display: flex;
 }
 
 .camera_button{
-    padding-left: 30px;
+    padding-left: 10px;
 
 }
-
 .avatar {
     text-align: center;
     width: 220px;
@@ -27,10 +27,28 @@
 }
 
 .contact {
-    padding-right: 10px;
+    width: 400px;
+    border-radius: 15px;
+    text-shadow: #1890ff 0 0 2px;
 }
 
 .title{
     font-size: 16px;
     color: honeydew;
+
+}
+
+.profile_container{
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 0 10px 0 #dddddd;
+    padding: 5px;
+    align-items: center;
+}
+
+
+.button_edit{
+    text-align: center;
+    top: 40px;
+    left: 10px;
 }

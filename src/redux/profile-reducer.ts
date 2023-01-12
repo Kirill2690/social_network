@@ -155,7 +155,6 @@ export const savePhoto = (file: string): ThunkType => async (dispatch: ThunkDisp
 }
 
 export const saveProfile = (profile: ProfileType | null): ThunkType => async (dispatch: ThunkDispatchType, getState) => {
-    debugger
     const userId = getState().auth.userId
     const response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {

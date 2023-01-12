@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Header.module.css';
 import {NavLink} from 'react-router-dom';
 import {Button} from 'antd';
-import userPhoto from '../../assets/images/user.png';
+import userPhoto from '../../assets/images/profile.png';
 import social from '../../assets/images/CR_Messi.png'
 import {useAppSelector} from '../../redux/redux-store';
 

@@ -18,8 +18,8 @@ const AddNewPostForm: FC<InjectedFormProps<MyPostFormPropsType>> = (props) => {
                     name={'newPostText'}
                     validate={[required, maxLength30]}
                     placeholder={'Post message'}
-                    rows={3}
-                />
+                    rows={2}
+                 />
                 <div>
                     <button className={styles.button} type={'submit'}>Add post</button>
                 </div>

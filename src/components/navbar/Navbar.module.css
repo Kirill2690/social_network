@@ -19,7 +19,6 @@
 .item a.activeLink {
     color: rgba(255, 255, 255, 0.7);
     text-shadow: #1890ff 0 0 2px;
-
     box-sizing: border-box;
 }
 

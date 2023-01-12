@@ -48,6 +48,7 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
         <div>
             <div className={s.descriptionBlock}>
                 <div className={s.avatar}>
+                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                     <img src={profile.photos?.large || userPhoto} className={s.mainPhoto} alt={'large avatar'}/>
                     <div className={s.camera_button}>
                         <Button
@@ -66,7 +67,6 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({
                         style={{display: 'none'}}
                     />
                 }
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 {editMode
                     ? <ProfileDataForm initialValues={profile} onSubmit={onSubmit}/>
                     : <ProfileData goToEditMode={() => {
@@ -82,7 +82,7 @@ type ContactType = {
     contactValue: string
 }
 
-type ProfileDataType = {
+export type ProfileDataType = {
     profile: ProfileType
     isOwner: boolean
     goToEditMode: () => void
@@ -90,9 +90,7 @@ type ProfileDataType = {
 
 const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}) => {
     return <div className={s.contact}>
-        {isOwner && <div>
-            <Button type="default" shape="round" onClick={goToEditMode}>edit</Button>
-        </div>}
+
         <div>
             <span className={s.title}>Full name: </span> {profile.fullName}
         </div>
@@ -112,6 +110,9 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
             return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]}/>
         })}
         </div>
+        {isOwner && <div className={s.button_edit}>
+            <button  onClick={goToEditMode}>Edit</button>
+        </div>}
     </div>
 }
 

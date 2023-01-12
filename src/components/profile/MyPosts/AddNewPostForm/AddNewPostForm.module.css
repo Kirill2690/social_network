@@ -1,6 +1,5 @@
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -17,3 +16,4 @@ button{
 .btn:hover {
     transition: 1s ease-in-out;
 }
+

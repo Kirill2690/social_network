@@ -13,8 +13,8 @@ a {
     background-size: 0% 2px;
     transition: background-size .3s;
     color: rgba(255, 255, 255, 0.7);
-    text-shadow: #1890ff 0 0 2px;
     font-size: 30px;
+    text-align: center;
 }
 
 a:hover {
@@ -30,4 +30,11 @@ a:hover {
 .news_img{
     max-height: 80vh;
     max-width: 600px;
+}
+
+.news_link{
+    padding-left: 100px;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-image: none;
 }
